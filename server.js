@@ -16,19 +16,12 @@ app.use(express.static('public'));
 app.route('/api')
   .get((req, res) => {
     console.log('GET request detected');
-<<<<<<< HEAD
     res.send('Lab 5 for Jasmine Soni');
-=======
-    res.send(`Lab 5 for ${process.env.NAME}`);
->>>>>>> 00fe1777fa62b0bcd56987b128f946baff0e98d7
   })
   .post((req, res) => {
     console.log('POST request detected');
     console.log('Form data in res.body', req.body);
-<<<<<<< HEAD
     res.send('hello world');
-=======
->>>>>>> 00fe1777fa62b0bcd56987b128f946baff0e98d7
   });
 
 app.listen(port, () => {
