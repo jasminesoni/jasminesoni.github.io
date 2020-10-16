@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 app.route('/api')
   .get((req, res) => {
     console.log('GET request detected');
-    res.send('Lab 5 for Jasmine Soni');
+    res.send('Lab 6 for Jasmine Soni');
   })
   .post((req, res) => {
     console.log('POST request detected');

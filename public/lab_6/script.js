@@ -8,7 +8,8 @@ function range(int) {
   return arr;
 }
 
-function sortFunction(a, b, key) {
+// sortFunction(b, a) <-- descending sort
+function sortFunction(a, b, key) { 
   if (a[key] < b[key]) {
     return -1;
   } if (a[key] > b[key]) {
@@ -17,9 +18,9 @@ function sortFunction(a, b, key) {
   return 0;
 }
 
-document.body.addEventListener('submit', async (e) => {
-  e.preventDefault(); // this stops whatever the browser wanted to do itself.
-  const form = $(e.target).serializeArray(); // here we're using jQuery to serialize the form
+document.body.addEventListener('submit', async (evt) => {
+  evt.preventDefault(); // this stops whatever the browser wanted to do itself.
+  const form = $(evt.target).serializeArray(); // here we're using jQuery to serialize the form
   fetch('/api', {
     method: 'POST',
     headers: {
@@ -27,7 +28,7 @@ document.body.addEventListener('submit', async (e) => {
     },
     body: JSON.stringify(form)
   })
-    .then((fromServer) => fromServer.json())
+    .then((fromServer) => fromServer.json()) // JSON.parse()
     .then((fromServer) => {
       // You're going to do your lab work in here. Replace this comment.
       console.log('fromServer', fromServer);
