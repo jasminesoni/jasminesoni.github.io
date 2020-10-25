@@ -36,6 +36,9 @@ document.body.addEventListener('submit', async (evt) => {
     .then((fromServer) => fromServer.json()) // JSON.parse()
     .then((fromServer) => {
       // You're going to do your lab work in here. Replace this comment.
+      if (document.querySelector('.flex-inner')) {
+        document.querySelector('.flex-inner').remove();
+      }
       const arr = range(10);
       const arrMap = arr.map(() => {
         const rand = getRandomIntInclusive(0, 243);
@@ -43,18 +46,16 @@ document.body.addEventListener('submit', async (evt) => {
       });
 
       const reverse = arrMap.sort((a, b) => sortFunction(b, a, 'name'));
-      if (document.querySelector('.flex-inner')) {
-        document.querySelector('.flex-inner').remove();
-      }
-      const ul = document.createElement('ul');
-      ul.className = 'flex-inner';
-      $('form').prepend(ul);
+      
+      const ol = document.createElement('ol');
+      ol.className = 'flex-inner';
+      $('form').prepend(ol);
 
       reverse.forEach((el, i) => {
         const li = document.createElement('li');
         $(li).append(`<input type="checkbox" value=${el.code} id=${el.code} />`);
         $(li).append(`<label for=${el.code}> ${el.name} <label/>`);
-        $(ul).append(li);
+        $(ol).append(li);
       });
       // console.log('fromServer', fromServer);
     })
